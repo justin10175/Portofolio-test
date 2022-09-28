@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance E-Portfolio</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/0761bbbd60.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("cZX4ezttbcoqQYv0q");
+   })();
+</script>
+  </head>
+  <body>
+    <section id="landing-page" onmousemove="moveBackground(event)">
+      <nav>
+        <figure class="nav__logo-wrapper">
+          <img class="nav__logo" src="./assets/logo.svg" alt="image" />
+        </figure>
+        <ul class="nav__link--list">
+          <li class="nav__link" onclick="toggleModal()">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              >About</a
+            >
+          </li>
+          <li class="nav__link">
+            <a
+              href="#projects"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              >Projects</a
+            >
+          </li>
+          <li class="nav__link" onclick="toggleModal()">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              >Contact</a
+            >
+          </li>
+          <li class="nav__link" onclick="toggleContrast()">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              ><i class="fa-solid fa-circle-half-stroke click"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <header class="header">
+        <div class="header-content">
+          <h1 class="title">
+            Hey
+            <br />
+            <span class="orange">I'm Justin.</span>
+          </h1>
+          <p class="header__para">
+            I'm a
+            <b><span class="orange">Frontend Software Engineer</span></b> with a
+            strong passion for building web applications with great user
+            experiences.
+            <br />
+            Here's a bit more <b><span class="orange cursor" onclick="toggleModal()">about me.</span></b>
+          </p>
+          <div class="social__list">
+            <a
+              class="header__social click"
+              target="_blank"
+              href="https://www.linkedin.com/in/justin-zhang-251536248/"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a
+              class="header__social click"
+              target="_blank"
+              href="https://github.com/justin10175"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a
+              class="header__social click"
+              target="_blank"
+              href="./assets/David Bragg Resume.pdf"
+              ><i class="fa-solid fa-file"></i
+            ></a>
+          </div>
+        </div>
+      </header>
+      <a href="#">
+        <button class="mail__btn click cursor" onclick="toggleModal()"> 
+          <i class="fa-regular fa-envelope"></i>
+        </button>
+      </a>
+      
+      <a href="#projects" class="scroll">
+        <div class="scroll__icon click"></div>
+      </a>
+      <div class="modal">
+        <div class="modal__half modal__about">
+          <h3 class="modal__title modal__title--about">
+            Here's a bit about me
+          </h3>
+          <h4 class="modal__sub-title modal__sub-title--about">
+            Frontend Software Engineer
+          </h4>
+          <p class="modal__para">
+            I'm a 15 year old Chinese-American
+            <b class="orange">frontend software engineer</b> with a strong
+            passion for developing websites with great
+            <b class="orange">user experience</b>
+            <br />
+            I currently work on extremely difficult engineering problems and
+            learn from a team consisting of some of the most <b class="orange">talented</b> and
+            <b class="orange">experienced</b> software engineers everyday.
+          </p>
+          <div class="modal__languages">
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="./assets/HTML__LOGO.png"
+                alt=""
+              />
+              <span class="language__name">Html</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="./assets/css__LOGO.webp"
+                alt=""
+              />
+              <span class="language__name">Css</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="./assets/js logo.png"
+                alt=""
+              />
+              <span class="language__name">Js</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="./assets/React-icon.svg.png"
+                alt=""
+              />
+              <span class="language__name">React</span>
+            </figure>
+          </div>
+        </div>
+        <div class="modal__half modal__contact">
+          <i class="fa-solid fa-x modal__exit click cursor" onclick="toggleModal()"></i>
+          <h3 class="modal__title modal__title--contact">
+            Let's have a chat
+          </h3>
+          <h3 class="modal__sub-title modal__sub-title--contact">
+            I'm currently open to new opportunies
+          </h3>
+          <form id="contact__form" onsubmit="contact(event)">
+            <div class="form__item">
+              <label class="form__item--label">Name</label>
+              <input class="input" name="user_name" type="text" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Email</label>
+              <input class="input" name="user_email" type="text" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Message</label>
+              <textarea class="input" name="message" type="text" required></textarea>
+            </div>
+            <button id="contact__submit" class="form__submit">
+              Send it my Way!
+            </button>
+          </form>
+          <div class="modal__overlay modal__overlay--loading">
+            <i class="fa-solid fa-spinner"></i>
+          </div>
+          <div class="modal__overlay modal__overlay--success">
+            Thanks for the message! Looking forward to speaking with you soon!
+          </div>
+        </div>
+      </div>
+      <img class="shape shape--0" src="./assets/semi circle.svg" alt="">
+      <img class="shape shape--1" src="./assets/circle.svg" alt="">
+      <img class="shape shape--2" src="./assets/squiggly.svg" alt="">
+      <img class="shape shape--3" src="./assets/circle.svg" alt="">
+      <img class="shape shape--4" src="./assets/triangle.svg" alt="">
+      <img class="shape shape--5" src="./assets/circle.svg" alt="">
+      <img class="shape shape--6" src="./assets/squiggly.svg" alt="">
+      <img class="shape shape--7" src="./assets/circle.svg" alt="">
+      <img class="shape shape--8" src="./assets/semi circle.svg" alt="">
+    </section>
+    <section id="projects">
+      <div class="container">
+        <div class="row">
+          <h1 class="section__title">
+            Here are some of my <span class="orange">projects</span>
+          </h1>
+          <ul class="project__list">
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  src="./assets/blinker mockup.png"
+                  class="project__img"
+                  alt=""
+                />
+                <div class="project__wrapper--bg">
+                  <div class="project__description">
+                    <h3 class="project__description--title">
+                      Car Sales Project
+                    </h3>
+                    <h4 class="project__description--sub-title">
+                      Html, Css, Javascript
+                    </h4>
+                    <p class="project__description--para">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Iste, aliquam porro qui suscipit quia nisi architecto
+                      sequi, quos distinctio vel recusandae ipsam obcaecati,
+                      beatae ad totam dolores illum. Deleniti, earum.
+                    </p>
+                    <div class="project__description--links">
+                      <a class="project__description--link" href="">
+                        <i class="fa-brands fa-linkedin click"></i>
+                      </a>
+                      <a class="project__description--link" href="">
+                        <i class="fa fa-github click"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="project">
+              <div class="project__wrapper">
+                <img
+                  src="./assets/blinker mockup.png"
+                  class="project__img"
+                  alt=""
+                />
+                <div class="project__wrapper--bg">
+                  <div class="project__description">
+                    <h3 class="project__description--title">
+                      Car Sales Project
+                    </h3>
+                    <h4 class="project__description--sub-title">
+                      Html, Css, Javascript
+                    </h4>
+                    <p class="project__description--para">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Iste, aliquam porro qui suscipit quia nisi architecto
+                      sequi, quos distinctio vel recusandae ipsam obcaecati,
+                      beatae ad totam dolores illum. Deleniti, earum.
+                    </p>
+                    <div class="project__description--links">
+                      <a class="project__description--link" href="">
+                        <i class="fa-brands fa-linkedin click"></i>
+                      </a>
+                      <a class="project__description--link" href="">
+                        <i class="fa fa-github click"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row footer__row">
+          <figure class="footer__logo-wrapper">
+            <img class="footer__logo" src="./assets/logo.svg" alt="" />
+          </figure>
+          <div class="footer__social--links">
+            <a
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+              href=""
+              >Github</a
+            >
+            <a
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+              href=""
+              >Linkedin</a
+            >
+            <a
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+              href="#"
+              onclick="toggleModal()"
+              >Contact</a
+            >
+            <a
+              class="footer__social--link link__hover-effect link__hover-effect--white"
+              href=""
+              >Resume</a
+            >
+          </div>
+          <div class="footer__copyright">Copyright © 2022 Justin Zhang</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
